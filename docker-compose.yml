@@ -1,0 +1,65 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./desafiofullstackback
+      dockerfile: Dockerfile
+    container_name: desafio_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./desafiofullstackback:/app
+      - ./desafiofullstackback/database:/app/database
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - APP_KEY=base64:examplekey
+      - DB_CONNECTION=sqlite
+      - DB_DATABASE=/app/database/database.sqlite
+    depends_on:
+      - maildev
+
+  frontend:
+    build:
+      context: ./desafiovuejs
+      dockerfile: Dockerfile
+    container_name: desafio_frontend
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./desafiovuejs:/app
+    environment:
+      - VITE_API_URL=http://localhost:8000/api
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3001:3001"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+
+  maildev:
+    image: maildev/maildev
+    container_name: maildev
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+volumes:
+  grafana_data:
+
+networks:
+  mynetwork:
+    driver: bridge
