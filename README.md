@@ -41,7 +41,7 @@ Antes de rodar o projeto, certifique-se de ter os seguintes requisitos instalado
    Clone o repositório com o seguinte comando:
 
    ```bash
-   git clone https://github.com/SEU_USUARIO/testefullstackphp.git
+   git clone https://github.com/jardelva96/testefullstackphp.git
    ```
 - Configuração do Backend (Laravel)
 
