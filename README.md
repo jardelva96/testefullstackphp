@@ -47,42 +47,38 @@ Antes de rodar o projeto, certifique-se de ter os seguintes requisitos instalado
 
 - Após clonar o repositório, entre na pasta do backend e instale as dependências:
 
-   ```bash
-
+```bash
 cd desafiofullstackback
 composer install
-Copie o arquivo .env.example para .env:
 ```
-   ```bash
-
+- Copie o arquivo .env.example para .env:
+```bash
 cp .env.example .env
-Gere a chave do aplicativo:
 ```
-   ```bash
+- Gere a chave do aplicativo:
+```bash
 php artisan key:generate
-Certifique-se de que a configuração do banco de dados (DB_CONNECTION=sqlite) está correta no arquivo .env.
 ```
+- Certifique-se de que a configuração do banco de dados (DB_CONNECTION=sqlite) está correta no arquivo .env.
 - Configuração do Frontend (Vue.js)
 
 ### Entre na pasta do frontend e instale as dependências:
-
-   ```bash
+```bash
 cd desafiovuejs
 npm install
-Inicie o servidor de desenvolvimento:
 ```
-
-   ```bash
+- Inicie o servidor de desenvolvimento:
+ ```bash
 npm run serve
+```
 Executando com Docker
-```
+
 ### Se você quiser rodar a aplicação no Docker, basta usar o comando abaixo:
-
-   ```bash
-
+```bash
 docker-compose up --build
-Isso irá subir os contêineres para o frontend, backend e outros serviços necessários.
 ```
+- Isso irá subir os contêineres para o frontend, backend e outros serviços necessários.
+
 ## Funcionalidades
 ### Backend:
 API RESTful com autenticação de usuários.
